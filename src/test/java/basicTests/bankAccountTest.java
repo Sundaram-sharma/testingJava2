@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 @DisplayName("Testing Bank Account")
 public class bankAccountTest {
 
@@ -38,7 +39,9 @@ public class bankAccountTest {
     @DisplayName("Test activation account after creation")
     public void testActive(){
         bankAccount BankAccount = new bankAccount(500,-1000);
-        assertTrue(BankAccount.isActive()); //checking if the value is 'true'
+        //assumeTrue(BankAccount != null,"Account is null"); // assume if the account is null or not. test will run only if conditions are met
+        assumingThat(BankAccount == null, ()-> assertTrue(BankAccount.isActive())); //assumingThat will combine assertTrue and assumeTrue
+        //assertTrue(BankAccount.isActive()); checking if the value is 'true'. Also there is 'assumeFalse'
 
     }
 
@@ -47,6 +50,7 @@ public class bankAccountTest {
     public void testHolderName(){
         bankAccount BankingAccount = new bankAccount(500,0);
         BankingAccount.setHolderName("Henry");
+
         assertNotNull(BankingAccount.getHolderName()); // check the holder name is empty or not
 
     }
