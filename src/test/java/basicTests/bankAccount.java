@@ -4,9 +4,29 @@ public class bankAccount {
     private double balance;
     private double minimunBalance;
 
+    private boolean isActive = true;
+
+    private String holderName;
+
+    public String getHolderName() {
+        return holderName;
+    }
+
+    public void setHolderName(String holderName) {
+        this.holderName = holderName;
+    }
+
     public bankAccount(double balance, double minimunBalance){
         this.balance = balance;
         this.minimunBalance = minimunBalance;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public double getBalance() {

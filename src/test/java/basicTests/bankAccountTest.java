@@ -32,4 +32,28 @@ public class bankAccountTest {
         assertNotEquals(0,BankAccount.getBalance());//compare two to check if they are not equal
     }
 
+    @Test
+    @DisplayName("Test activation account after creation")
+    public void testActive(){
+        bankAccount BankAccount = new bankAccount(500,-1000);
+        assertTrue(BankAccount.isActive()); //checking if the value is 'true'
+
+    }
+
+    @Test
+    @DisplayName("Test set holder name")
+    public void testHolderName(){
+        bankAccount BankingAccount = new bankAccount(500,0);
+        BankingAccount.setHolderName("Henry");
+        assertNotNull(BankingAccount.getHolderName()); // check the holder name is empty or not
+
+    }
+
+    @Test
+    @DisplayName("Test that we can't withdraw below minimum")
+    public void testNoWithdrawBelowMinimun(){
+        bankAccount BankAccount = new bankAccount(500,0);
+        assertThrows(RuntimeException.class, ()->BankAccount.withdraw(2000)); //to check if the RuntimeException.class will be thrown or not as withdraw amount is more than minimum balance
+    }
+
 }
