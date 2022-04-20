@@ -3,6 +3,8 @@ package basicTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Testing Bank Account")
 public class bankAccountTest {
@@ -55,5 +57,23 @@ public class bankAccountTest {
         bankAccount BankAccount = new bankAccount(500,0);
         assertThrows(RuntimeException.class, ()->BankAccount.withdraw(2000)); //to check if the RuntimeException.class will be thrown or not as withdraw amount is more than minimum balance
     }
+
+    @Test
+    @DisplayName("Test no exception for withdraw and deposit")
+    public void testDepositAndWithDrawWithoutExceptions() {
+        bankAccount BankAccount = new bankAccount(500, -1000);
+        assertAll( ()-> BankAccount.deposit(200), ()-> BankAccount.withdraw(450) );
+    }
+
+    @Test
+    @DisplayName("Time took to deposit")
+    public void testDepositTimeout(){
+        bankAccount BankAccount = new bankAccount(400,0);
+        assertTimeout(Duration.ofNanos(1), ()-> BankAccount.deposit(200));
+
+
+    }
+
+
 
 }
