@@ -42,7 +42,7 @@ public class bankAccountParameterizedTest {
 
     @ParameterizedTest
     //@CsvSource({"100, Mary", "200, Rishab","300, Shila"}) //The @CsvSource accepts an array of comma-separated values, and each array entry corresponds to a line in a CSV file.
-    @CsvFileSource(resources = "res.csv", delimiter = ';')
+    @CsvFileSource(resources = "res.csv", delimiter = ';') //this will locate the file inside the folder
     public void depositAndNameTest2(double amount, String name, bankAccount BankAccount){
         BankAccount.deposit(amount);
         BankAccount.setHolderName(name);
