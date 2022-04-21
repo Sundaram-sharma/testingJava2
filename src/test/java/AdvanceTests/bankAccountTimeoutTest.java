@@ -28,7 +28,7 @@ public class bankAccountTimeoutTest {
     @Test
     public void testDepositTimeoutAssertion2(bankAccount Bankaccount){
         try{
-            Thread.sleep(100); //the program will wait for the 1000milisec
+            Thread.sleep(100); //the program will wait for the 100milisec
         }catch (InterruptedException e){
             e.printStackTrace();
         }
